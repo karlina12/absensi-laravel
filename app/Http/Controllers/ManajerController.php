@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Manajer;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Presensi;
 
-class ManajerController extends Controller
+class PresensiController extends Controller
 {
-    public function dashboard()
-{
-    return view('manajer.dashboard');
-}
-
+    public function index()
+    {
+        $presensis = Presensi::with('user')->get();
+        return view('manajer.presensi', compact('presensis'));
+    }
 }
